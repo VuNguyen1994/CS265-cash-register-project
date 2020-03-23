@@ -1,0 +1,86 @@
+Name: Dinh Nguyen
+Lab 03
+
+Q1. Output:
+dln45@tux2 Lab03> [[ 13 < 2 ]] && echo true
+true
+It shows the expression 13<2 in the double square brackets is true. 
+The reason is because it reads all parameters as strings.
+Thus, the first letters '1' of '13' < first letter '2' of '2', so [[ 13 < 2 ]] is true. 
+
+Q2. Copy mySettings file to current directory:
+dln45@tux2 Lab03> cp ~kschmidt/public_html/CS265/Labs/Bash/mySettings .
+dln45@tux2 Lab03> if grep chocolate mySettings &>/dev/null ; then
+>    echo "All we have to decide is what to do with the chocolate that is given us..."
+> fi
+All we have to decide is what to do with the chocolate that is given us...
+
+The grep command in the if condition will search for the word 'chocolate' in the file mySettings
+and then redirect the output to /dev/null which will discard the output. 
+If it found some 'chocolate' in mySettings, the exit status of the if condition will be 0 and
+then it will execute the command echo.
+The output proves that there are some 'chocolate' words in mySettings file. 
+
+Q3. Output
+dln45@tux2 Lab03> x=13
+dln45@tux2 Lab03> echo $(( x / 5 ))
+2
+
+(()) - let arithmetic operator will treat values stored in parameters as intergers. 
+It operates a division 13/5 which returns a floor integer of the mathematic result. 
+
+Q4. Output
+dln45@tux2 Lab03> (( 27 % 2 == 1 ))
+dln45@tux2 Lab03> echo $?
+0
+
+(()) will treats parameters as integers, 
+so 27%2 == 1 is a normal remainder operation which return true or 0 because 27 = 13*2+1
+echo $? will show the exit status of the last command
+Thus, it shows 0 because the last command is true and successfully executed (1 if it is False).
+
+Q5. Output
+dln45@tux4 Lab03> unset x
+dln45@tux4 Lab03> ( x=12 ; echo "5 $x 13" )
+5 12 13
+dln45@tux4 Lab03> echo "5 $x 13"
+5  13
+
+In the main shell, x doesnt store any value so echo "5 $x 13" will show only 5  13. 
+However, in the subshell ( x=12 ; echo "5 $x 13" ) grouped by the (), 
+x is assigned value of 12. Thus, the value of x=12 only stays in the subshell. 
+( x=12 ; echo "5 $x 13" ) will print out 5 12 13 from the subshell. 
+
+Q6. Output
+dln45@tux2 Lab03> for item in $(cat blah) ; do
+>    echo $item
+> done
+Item
+Another
+item
+
+Q7. Output
+dln45@tux2 Lab03> cat blah | while read item ; do
+>    echo $item
+> done
+Item
+Another item
+
+Q8. Output
+dln45@tux2 Lab03> while read item ; do
+>    echo $item
+> done < blah
+Item
+Another item
+
+Q9. Uploaded count.bash
+Output tested with filenames that have spaces in them:
+dln45@tux4 Lab03> dln45@tux4 Lab03> ./count.bash
+bl ah 2 3
+breadIsDangerous.txt 97 499
+count.bash 6 16
+mySettings 4 2
+
+Q10. Uploaded reextend
+
+Q11. Uploaded organiseMusic

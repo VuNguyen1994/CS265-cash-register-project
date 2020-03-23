@@ -1,0 +1,49 @@
+Name: Dinh Nguyen
+CS265 Lab 10
+
+Q1.
+                              T(n)/f(n)
+ n       T(n)     f(n)=n      f(n)=n^2    f(n)=nlogn  f(n)=nsqrtn f(n)=n^3
+ -----------------------------------------------------------------------------
+ 10000   1.059    1.059E-04   1.059E-08   2.6475E-05  1.059E-06   1.059E-12
+ 20000   2.357    1.178E-04   5.892E-09   2.7400E-05  8.333E-07   2.946E-13
+ 30000   3.754    1.251E-04   4.171E-09   2.7949E-05  7.224E-07   1.390E-13
+ 40000   5.83     1.457E-04   3.643E-09   3.1670E-05  7.287E-07   9.109E-14
+ 50000   6.517    1.303E-04   2.606E-09   2.7738E-05  5.828E-07   5.213E-14
+ 60000   9.584    1.597E-04   2.662E-09   3.3429E-05  6.521E-07   4.437E-14
+
+ Conclusions:
+ As n grows,
+ T(n) is increasing, to it is bound below (not tightly) by a constant. T(n) = w(1)
+ f(n)=n: T(n)/f(n) increase, so T(n) is bound below by a line. T(n) = W(n)
+ f(n)=n^2 or n^3: T(n)/f(n) decrease, T(n) is bound above by f(n) = n^2. T(n) = O(n^2).
+ f(n)=nlogn: T(n)/f(n) increase slowly, so T(n) is bound below by f(n)=nlogn. T(n) = W(nlogn)
+ f(n)=nsqrtn: T(n)/f(n) decrease, T(n) is bound above by f(n)=nsqrtn. T(n) = O(nsqrtn)
+
+ So T(n) is bound below by T(n)=W(nlogn) and bound above by T(n)= O(nsqrtn).
+
+
+Q2.
+T(n) = number of calls of swap() function
+                                    T(n)/f(n)
+ n       T(n)        f(n)=n      f(n)=n^2    f(n)=nlogn  f(n)=nsqrtn f(n)=n^3
+ ---------------------------------------------------------------------------
+ 10000   45721062    4572.10     0.457       1143.02     45.72       4.57E-05
+ 20000   98107982    4905.39     0.245       1140.51     34.68       1.22E-05
+ 30000   153522280   5117.40     0.170       1143.01     29.54       5.68E-06
+ 40000   210173451   5254.33     0.131       1141.73     26.27       3.28E-06
+ 50000   265180908   5303.61     0.106       1128.67     23.71       2.12E-06
+ 60000   319847373   5330.78     0.088       1115.65     21.76       1.48E-06
+
+ Conclusions:
+ As n grows,
+ T(n) is increasing, to it is bound below (not tightly) by a constant. T(n) = w(1)
+ f(n)=n: T(n)/f(n) increase, so T(n) is bound below by a line. T(n) = W(n)
+ f(n)=n^2 or n^3: T(n)/f(n) decrease, T(n) is bound above by f(n) = n^2. T(n) = O(n^2).
+ f(n)=nsqrtn: T(n)/f(n) decrease, T(n) is bound above by f(n)=nsqrtn. T(n) = O(nsqrtn)
+ f(n)=nlogn: T(n)/f(n) decrease slowly, so T(n) is bound above by f(n)=nlogn. T(n) = O(nlogn)
+
+ So T(n) is bound below by T(n)=W(n) and bound above by T(n)= O(nlogn).
+
+
+*********************************END***************************************

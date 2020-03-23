@@ -1,0 +1,141 @@
+Lab 02
+Q1. Output:
+dln45@tux3 CS265> find . -type f -mtime -2 -print
+./Lab02/Tmp/gotMe.bash
+./Lab02/list
+
+Q2. Command find to find all files that end in .bash
+dln45@tux2 CS265> find . -iname "*.bash"
+./Lab02/Tmp/gotMe.bash
+./hello.bash
+
+Q3. Output
+dln45@tux2 Lab02> cp ~kschmidt/public_html/CS265/Labs/Bash/breadIsDangerous.txt .
+dln45@tux2 Lab02> wc -w breadIsDangerous.txt
+499 breadIsDangerous.txt
+
+Q4. Output
+dln45@tux2 Lab02> cat breadIsDangerous.txt | wc -w
+499
+
+Q5. Command and the output
+dln45@tux5 Lab02> ls -l | wc -l
+4
+
+Q6. Use this command to find all occurrences of bread in breadIsDangerous.txt file
+dln45@tux5 Lab02> grep "bread" breadIsDangerous.txt
+Use this command to find all occurrences of bread in breadIsDangerous.txt file ignoring word case
+(Including Bread, BREAD etc...)
+dln45@tux5 Lab02> grep -i "bread" breadIsDangerous.txt
+
+Q7. Find how many lines contain the string the by pipe
+dln45@tux5 Lab02> grep -i "the" breadIsDangerous.txt | wc -l
+11
+
+Q8. The diffence is that there is an extra file spellExample.bak appeared in the directory. 
+dln45@tux5 Lab02> ls -a
+.  ..  breadIsDangerous.txt  list  spellExample  spellExample.bak  Tmp
+
+Q9. Output
+dln45@tux5 Lab02> diff spellExample.bak spellExample
+1c1
+< I went to a gadren party
+---
+> I went to a garden party
+3c3
+< bnuch of my old freinds did somehting
+---
+> bunch of my old friends did something
+5a6
+> An extra line
+Explain: 
+1c1 means the first lines of both files have to be changed (c is change) to make the two files identical.
+< means the line of the first file, > mean the line of the second file
+3c3 means the third lines of both files are different. 
+The first 3 is the third line of the first file.
+The second 3 is the third line of the second file.
+5a6 means there is a line needed to be added in order to make both files the same.
+> means the "An extra line" belongs to the spellExample at line 6.
+spellExample.bak does not have "An extra line".
+
+Q10. Nothing in the output because there is no difference, we are comparing the same file. 
+dln45@tux5 Lab02> diff spellExample spellExample
+dln45@tux5 Lab02>
+
+Q11. Output of sort numbers is not as expected. Because it sorts digit by digit.
+So, even the number is smaller, but with its first digit is larger (6 and 9), it will be placed at the end of the list.
+dln45@tux5 Lab02> sort numbers
+1
+15
+17
+20
+24
+26
+28
+29
+6
+9
+
+Q12. Output is different with sort -n numbers.
+-n option will sort the file numberically. 
+dln45@tux5 Lab02> sort -n numbers
+1
+6
+9
+15
+17
+20
+24
+26
+28
+29
+
+Q13. Output. 
+dln45@tux5 Lab02> ls -oh | sort -k4 -h -r
+-rw-r-xr-- 1 dln45 2.9K Jan 17 08:46 breadIsDangerous.txt
+-rw-r-xr-- 1 dln45  111 Jan 17 21:38 spellExample
+-rw-r-xr-- 1 dln45   97 Jan 17 21:23 spellExample.bak
+drwxrwxr-x 2 dln45   36 Jan 17 08:19 Tmp
+-rw-r-xr-- 1 dln45   27 Jan 17 21:57 numbers
+-rw-rw-r-- 1 dln45   13 Jan 17 08:15 list
+total 5.5K
+Sort -k4 will create a table of output and sort by the 4th column.
+-h is to print the results in the human readable format. 
+-r will sort the output following reverse order. 
+So in this case, breadIsDangerous.txt is 2.9K in size to it goes first. 
+
+Q14. Command to show the 8 largest files in my course directory
+Output:
+dln45@tux5 CS265> du -ah | sort -rh | head -8
+248K    .
+240K    ./lab1
+46K     ./lab1/emacs_lab
+46K     ./lab1/#emacs_lab#
+33K     ./lab1/vi_lab
+28K     ./lab1/.vi_lab.swo
+24K     ./lab1/.vi_lab.swm
+24K     ./lab1/.vi_lab.swl
+
+Q15. Output. echo $? will read the return value of the previous command.
+There is 'dough' in the file so the return value is 0.
+There is no 'uniqueString'in the file so the return value is 1.
+And in third case, there is an error opening the file noSuhcFile so the return value is 2. 
+dln45@tux5 Lab02> grep dough breadIsDangerous.txt
+dln45@tux5 Lab02> echo $?
+0
+dln45@tux5 Lab02> grep uniqueString breadIsDangerous.txt
+dln45@tux5 Lab02> echo $?
+1
+dln45@tux5 Lab02> grep dough noSuchFile
+grep: noSuchFile: No such file or directory
+dln45@tux5 Lab02> echo $?
+2
+
+Q16. Output
+dln45@tux5 Lab02> f=breadIsDangerous.txt
+dln45@tux5 Lab02> echo "File $f has $(cat "$f" | wc -w) words"
+File breadIsDangerous.txt has 499 words
+
+Q17. Command that would output: 
+The current directory is: /home/dln45/CS265/Lab02
+dln45@tux5 Lab02> echo "The current directory is: $PWD"

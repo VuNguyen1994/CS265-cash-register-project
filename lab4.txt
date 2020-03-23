@@ -1,0 +1,97 @@
+Name: Dinh Nguyen
+CS265 Lab 04
+
+Q1.1 egrep 'the' bright_side_of_life
+Output
+dln45@tux4 Lab04> egrep 'the' bright_side_of_life
+"Always Look on the Bright Side of Life"
+/* lathe */
+/* their */
+...
+
+Q1.2 egrep '\<the\>' bright_side_of_life
+Output
+dln45@tux4 Lab04> egrep '\<the\>' bright_side_of_life
+"Always Look on the Bright Side of Life"
+And this'll help things turn out for the best...
+...
+
+Q1.3 egrep '\<Just\>' bright_side_of_life
+Output
+dln45@tux4 Lab04> egrep '\<Just\>' bright_side_of_life
+Just purse your lips and whistle - that's the thing.
+    Just before you draw your terminal breath
+Just remember that the last laugh is on you.
+
+Q1.4 egrep '[Jj]ust' bright_side_of_life
+Output
+dln45@tux3 Lab04> egrep '[Jj]ust' bright_side_of_life
+Other things just make you swear and curse.
+Just purse your lips and whistle - that's the thing.
+    Just before you draw your terminal breath
+Just remember that the last laugh is on you.
+
+Q1.5 egrep '^\<[Jj]ust\>' bright_side_of_life
+Output
+dln45@tux4 Lab04> egrep '^\<[Jj]ust\>' bright_side_of_life
+Just purse your lips and whistle - that's the thing.
+Just remember that the last laugh is on you.
+
+Q1.6 egrep '\<[bm]ad\>' bright_side_of_life
+Output
+dln45@tux4 Lab04> egrep '\<[bm]ad\>' bright_side_of_life
+Some things in life are bad
+They can really make you mad
+
+Q1.7 egrep '\<(d|br)eath\>' bright_side_of_life
+Output
+dln45@tux4 Lab04> egrep '\<(d|br)eath\>' bright_side_of_life
+    So always look on the bright side of death
+    Just before you draw your terminal breath
+Life's a laugh and death's a joke, it's true.
+
+Q1.8 egrep 'you[,.]$' bright_side_of_life
+Output
+dln45@tux4 Lab04> egrep 'you[,.]$' bright_side_of_life
+Just remember that the last laugh is on you.
+
+Q1.9 egrep '^\s' bright_side_of_life 
+Output
+dln45@tux4 Lab04> egrep '^\s' bright_side_of_life
+ words and music by Eric Idle
+
+
+        And...always look on the bright side of life...
+        Always look on the light side of life...
+    And...always look on the bright side of life...
+    Always look on the light side of life...
+...
+
+Q1.10 egrep '^\s*$' bright_side_of_life
+
+Q1.11 13 blank lines. 
+
+Q2 Upload anagram.bash and an additional count.awk 
+
+Q3.1 SHA of my most recent commit: commit 054ce6b5a5bd912860a2e793fb7ed882e7ff8309
+dln45@tux5 lab-git> git log
+commit 054ce6b5a5bd912860a2e793fb7ed882e7ff8309 (HEAD -> master)
+Author: Dinh Nguyen <dln45@tux5.cci.drexel.edu>
+Date:   Fri Jan 31 18:35:03 2020 -0500
+
+    Fixed typo
+
+Q3.2 git reset:
+removes all pending changes from the index 
+and does nothing to the working tree
+git reset --hard: 
+clears the index (clear all pending changes), 
+returns the working directory to the last committed state. 
+
+Q3.3 Use git checkout to get an older committed version ('ketch' commit)
+Include the filename 'marlin' so we will not have a detached head. 
+Commit it back to use the old version
+Commands:
+$ git checkout dabc8 -- marlin
+$ git commit -m"Wanted an older version of marlin"
+

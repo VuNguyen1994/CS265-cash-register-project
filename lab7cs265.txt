@@ -1,0 +1,82 @@
+Name: Dinh Nguyen
+CS265 Lab 7
+
+Q1.
+addsuffix() is to add new suffix to a linked list State.
+add() function is to add new word to the list of suffix, update prefix and 
+create prefix if it does not exist.
+
+Q2.
+lookup() function is used to search for prefix and create prefix if 'create' flag =  1. 
+lookup() function returns a pointer if present or returns NULL if not. 
+lookup() function is called by functions add() and generate().
+
+Q3.
+pref[0] ---> [It's]
+  pref[1] ---> [a]
+  suf--------> [word] -> [new]
+  next->NULL    next -->  NULL
+
+pref[0] ---> [a]
+  pref[1] -----> [new]
+  suf ---------> [word] ---> [dawn]
+  next -> NULL   next -> NULL
+
+Q4.
+a. "It's" has 1 pointers
+b. "a" has 2 pointers
+c. "new" has 2 pointers
+d. "dawn" has 1 pointers
+
+Q5.
+void cleanup(State *statetab)
+{
+	for (int i = 0; i < NHASH; i++)
+	{
+		State *current = statetab[i];		
+		while(statetab[i] != NULL)
+		{
+			current = statetab[i]->next;
+			free(statetab[i]);
+			statetab[i] = current;
+		}
+	}
+}
+
+Q6. The difficulty is trying to handle whether free the statetab 
+first or moving to the next statetab first. However, it works as correctly.
+
+Q7. 
+Each string has been freed only once because once it is freed, 
+the program can not access the memory location of the string. 
+Thus, an error would occur if we try to free the string again. 
+
+Q8.
+Prefixes are stored in a deque (double ended queue) rather than a vector because
+the program can do operations on both end of the queue at the same time. 
+Thus, it is faster. 
+
+Q9.
+A map can be used as the dictionary in C++.
+
+Q10.
+The satellite data used vectors to store data. 
+
+Q11.
+C++ has a lot of adequate built in datatypes from STL library. Hence, we do not have to 
+create a hash table each time we want to create a dictionary or similar.
+
+Q12.
+Prefixes are stored as tupples.
+
+Q13.
+Python can use dictionary type (replacing hash table) to store data. 
+
+Q14.
+Satellite (list of suffices) data is stored in lists.
+
+Q15.
+Advantage of Python is human-friendly syntax with built in objects, 
+data structures, and pointers. Easy to learn and catch up with new programs.
+
+*******************************END OF FILE********************************* 
